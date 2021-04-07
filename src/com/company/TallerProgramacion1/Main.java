@@ -45,12 +45,16 @@ public class Main {
     return false;
     }
     public static int leerNumeroDecimal(){
-        int numDec= 0;
         Scanner teclado = new Scanner(System.in);
+        int numDec =0;
+        try {
         System.out.println("Ingrese un numero");
-        numDec = teclado.nextInt();
+         numDec = teclado.nextInt();
         if (validarDecimal(numDec)== false){
-        leerNumeroDecimal();
+            leerNumeroDecimal();
+        }}catch (Exception e){
+            teclado.next();
+            leerNumeroDecimal();
         }
         return numDec;
     }
