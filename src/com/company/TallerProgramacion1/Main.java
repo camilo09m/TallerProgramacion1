@@ -5,18 +5,16 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-            leerOpcion();
-            }
-    public static void leerOpcion(){
-        Scanner teclado = new Scanner(System.in);
-        menu();
-        String opcion = teclado.next();
+            String opcion=leerOpcion();
+            int valor;
         if(validacionMenu(opcion) == true) {
             if (opcion.equals("b")) {
+                //valor = leerNumeroBinario();
 
             }
             if (opcion.equals("d")) {
-
+                valor = leerNumeroDecimal();
+                System.out.println(valor);
             }
             if (opcion.equals("s")) {
 
@@ -26,6 +24,13 @@ public class Main {
             System.out.println("Opcion ingresa no valida");
             leerOpcion();
         }
+            }
+    public static String leerOpcion(){
+        Scanner teclado = new Scanner(System.in);
+        menu();
+        String opcion = teclado.next();
+
+    return opcion;
     }
     public static void menu(){
         System.out.println("************************************************");
@@ -39,10 +44,28 @@ public class Main {
             return true;}
     return false;
     }
-    public static int leerNumero(){
+    public static int leerNumeroDecimal(){
+        int numDec= 0;
         Scanner teclado = new Scanner(System.in);
         System.out.println("Ingrese un numero");
-        int valor = teclado.nextInt();
-        return valor;
+        numDec = teclado.nextInt();
+        if (validarDecimal(numDec)== false){
+        leerNumeroDecimal();
+        }
+        return numDec;
+    }
+   /* public static int[] leerNumeroBinario(){
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Ingrese un numero");
+
+    }
+    public static boolean validarBinario(int[] numBin ){
+
+    }*/
+    public static boolean validarDecimal(int numdec){
+        if (numdec >= 0 && numdec <256){
+            return true;
+        }
+        return false;
     }
 }
